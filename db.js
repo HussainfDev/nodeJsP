@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
-const mongoUrl = 'mongodb://localhost:27017/hotels' // replace hotel to new database and create
+require('dotenv').config()
+// const mongoUrl = 'mongodb://localhost:27017/hotels' // replace hotel to new database and create
+// const mongoUrl = 'mongodb+srv://hussainshah9897_db_user:bindass777@cluster0.xcmut1q.mongodb.net/' // replace hotel to new database and create
+ const mongoURL = process.env.MONGO_DB_URL ||  process.env.MONGO_DB_URL_LOCAL;
 
 mongoose
-  .connect(mongoUrl)
+  .connect(mongoURL)
   .then(() => console.log("Database Connected"))
   .catch((err) => console.log(err));
 
